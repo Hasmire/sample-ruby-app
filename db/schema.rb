@@ -10,8 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_07_001853) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "daycare_slots", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "pokemon_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pokemon_id"], name: "index_daycare_slots_on_pokemon_id"
+    t.index ["user_id"], name: "index_daycare_slots_on_user_id"
+  end
+
+  create_table "pokemons", force: :cascade do |t|
+    t.string "name"
+    t.integer "type"
+    t.text "description"
+    t.string "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pokemons_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "avatar"
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "daycare_slots", "pokemons"
+  add_foreign_key "daycare_slots", "users"
+  add_foreign_key "pokemons", "users"
 end
