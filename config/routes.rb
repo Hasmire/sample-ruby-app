@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "auth/register"
+  get "auth/login"
   get "static_pages/home"
   get "static_pages/help"
   get "render/index"
@@ -16,5 +18,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "static_pages/home"
   get "static_pages/help"
+  get "/login", to: "auth#login"
+  get "/register", to: "auth#register"
+
   root "render#index"
 end
