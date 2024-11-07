@@ -18,6 +18,6 @@ class Pokemon < ApplicationRecord
     dragon: 14,
     dark: 15,
     steel: 16,
-    fairy: 17
+    fairy: 17,
   }
 end
