@@ -1,0 +1,12 @@
+<% if logged_in? %>
+  <h1>Welcome Back <%= current_user.username %>!</h1>
+  <%= button_to "Log out", logout_path, method: :delete %>
+<% end %>
+
+
+<h1>All Users</h1>
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.username %></li>
+  <% end %>
+</ul>

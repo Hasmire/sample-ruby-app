@@ -24,8 +24,11 @@
   </head>
 
   <body>
-    <main class="">
-      <%= yield %>
+    <main class="bg-slate-200 w-full min-h-screen flex justify-center items-center">
+      <div class="flex flex-col max-w-lg w-full items-center gap-4">
+        <%= image_tag "pokeball.png", class:'w-20' %>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

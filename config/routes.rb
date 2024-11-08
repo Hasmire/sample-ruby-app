@@ -16,10 +16,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get "static_pages/home"
-  get "static_pages/help"
-  get "/login", to: "auth#login"
-  get "/register", to: "auth#register"
-
-  root "render#index"
+  root "dashboard#index"
+  get "dashboard/index"
+  get    "/login",  to: "sessions#new"
+  post   "/login",  to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  get "/register", to: "users#new"
+  post "/register", to: "users#create"
 end

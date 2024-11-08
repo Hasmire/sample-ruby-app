@@ -95,6 +95,11 @@
   input.error:focus-visible {
     @apply ring-destructive;
   }
+
+  label.required:after{
+    content:" *";
+    @apply text-red-400;
+  }
 }
 
 input[type="range"] {

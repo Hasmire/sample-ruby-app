@@ -1,0 +1,25 @@
+<div class="bg-slate-100 p-6 w-full rounded-md drop-shadow-md">
+  <p class="text-xl font-semibold mb-6 text-center">Create a new account</p>
+  <%= render_form_with(model: @user, url: register_path, class: "w-full") do |form| %>
+      <div class="flex flex-col gap-2 mb-4">
+      <%= form.label :username, class: "required" %>
+      <%= form.text_field :username, class: "col-span-2" %>
+    </div>
+    <div class="flex flex-col gap-2 mb-4">
+      <%= form.label :email, class: "required" %>
+      <%= form.text_field :email, class: "col-span-2" %>
+    </div>
+    <div class="flex flex-col gap-2">
+      <%= form.label :password, class: "required" %>
+      <%= form.password_field :password, class: "col-span-2 mb-8" %>
+    </div>
+    <div class="flex flex-col gap-2">
+      <%= form.label :password_confirmation, class: "required" %>
+      <%= form.password_field :password_confirmation, class: "col-span-2 mb-8" %>
+    </div>
+    <div class="flex justify-end items-center gap-4">
+      <p class="text-sm text-muted-foreground">Already have an account? <%= link_to "Log in", login_path, class:"underline hover:font-bold" %></p>
+      <%= form.submit "Register" %>
+    </div>
+  <% end %>
+</div>
