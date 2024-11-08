@@ -1,7 +1,7 @@
 class Pokemon < ApplicationRecord
   belongs_to :user
   has_one :daycare_slot
-  enum type: {
+  enum pokemon_type: {
     normal: 0,
     fire: 1,
     water: 2,

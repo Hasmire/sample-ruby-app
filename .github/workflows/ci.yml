@@ -50,6 +50,9 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Install dependencies
+        run: bundle install
+        
       - name: Lint code for consistent style
         run: bin/rubocop --require rubocop-airbnb
 
@@ -84,6 +87,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Set up Node.js and install JavaScript dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm install
 
       - name: Run tests
         env:
