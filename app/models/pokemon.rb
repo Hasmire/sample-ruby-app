@@ -1,12 +1,13 @@
 class Pokemon < ApplicationRecord
   belongs_to :user
   has_one :daycare_slot
-  enum pokemon_type: {
+
+  enum :pokemon_type, {
     normal: 0,
     fire: 1,
     water: 2,
-    electric: 3,
-    grass: 4,
+    grass: 3,
+    electric: 4,
     ice: 5,
     fighting: 6,
     poison: 7,

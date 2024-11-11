@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_07_001853) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_11_042207) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,7 +25,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_07_001853) do
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
-    t.integer "pokemon_type"
+    t.integer "pokemon_type", default: 0, null: false
     t.text "description"
     t.string "image"
     t.bigint "user_id", null: false
