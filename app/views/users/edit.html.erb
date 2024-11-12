@@ -1,0 +1,39 @@
+<% content_for :title, "Edit Profile Details" %>
+<% content_for :page_title, "Edit Profile Details" %>
+
+<%= render_form_for(@user, url: profile_path, method: :patch, local: true) do |form| %>
+  <div class="boxed">
+      <div>
+        <h1 class="text-lg font-semibold mb-1">Edit Profile Information</h1>
+        <p class="text-muted-foreground">
+          Update your profile information below.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <!-- Avatar Field -->
+        <div class="flex flex-col gap-2">
+          <p class="font-semibold">Avatar:</p>
+          <div class="flex gap-6 items-center">
+            <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar, alt: "Avatar Image", class: "size-24 rounded-full text-center object-cover" %>
+            <% else %>
+              <%= image_tag "default_avatar.jpg", alt: "Avatar Image", class: "size-24 rounded-full text-center object-cover" %>
+            <% end %>
+            <%= form.file_field  :avatar, class: "input-styled"%>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <%= form.label :bio, class: "required" %>
+          <%= form.text_area :bio, class: "" %>
+        </div>
+        <div class="flex flex-col gap-2 mb-4">
+          <%= form.label :username, class: "required" %>
+          <%= form.text_field :username, class: "" %>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <%= render_button "Back", as: :link, href: "/profile", variant: "secondary" %>
+        <%= form.submit "Save profile details" %>
+      </div>
+  </div>
+<% end %>

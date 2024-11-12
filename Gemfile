@@ -65,3 +65,5 @@ end
 gem "shadcn-ui", "~> 0.0.15"
 
 gem "tailwindcss-rails", "~> 3.0"
+
+gem 'active_storage_validations'

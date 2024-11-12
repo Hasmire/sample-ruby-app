@@ -3,19 +3,19 @@
   <%= render_form_with(model: @user, url: register_path, class: "w-full") do |form| %>
       <div class="flex flex-col gap-2 mb-4">
       <%= form.label :username, class: "required" %>
-      <%= form.text_field :username, class: "col-span-2" %>
+      <%= form.text_field :username, class: "" %>
     </div>
     <div class="flex flex-col gap-2 mb-4">
       <%= form.label :email, class: "required" %>
-      <%= form.text_field :email, class: "col-span-2" %>
+      <%= form.text_field :email, class: "co" %>
     </div>
     <div class="flex flex-col gap-2">
       <%= form.label :password, class: "required" %>
-      <%= form.password_field :password, class: "col-span-2 mb-8" %>
+      <%= form.password_field :password, class: "mb-8" %>
     </div>
     <div class="flex flex-col gap-2">
       <%= form.label :password_confirmation, class: "required" %>
-      <%= form.password_field :password_confirmation, class: "col-span-2 mb-8" %>
+      <%= form.password_field :password_confirmation, class: "mb-8" %>
     </div>
     <div class="flex justify-end items-center gap-4">
       <p class="text-sm text-muted-foreground">Already have an account? <%= link_to "Log in", login_path, class:"underline hover:font-bold" %></p>
