@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "dashboard#index"
   get "dashboard/index"
+  get "/profile", to: "users#show"
   get    "/login",  to: "sessions#new"
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

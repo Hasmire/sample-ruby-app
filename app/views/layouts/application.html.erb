@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Sample App" %></title>
+    <title><%= content_for(:title) + " | Poke Daycare" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -24,8 +24,30 @@
   </head>
 
   <body>
-    <main class="">
-      <%= yield %>
+    <%# Navbar - Move to component folder once completed %>
+    <div class="px-8 py-6 bg-background">
+      <div class="max-w-screen-xl mx-auto flex justify-between items-center z-10">
+        <%= link_to root_path, class: "flex items-center gap-2" do %>
+          <%= image_tag "pokeball.png", class: 'w-6' %>
+          <p class="text-xl font-semibold cursor-pointer">Poke Daycare</p>
+        <% end %>
+        <div class="flex gap-6 font-semibold">
+          <%= link_to "Home", root_path, class: "hover:border-b border-b-foreground cursor-pointer px-2" %>
+          <%= link_to "Profile", profile_path, class: "hover:border-b border-b-foreground cursor-pointer px-2" %>
+          <%= button_to "Log out", logout_path, method: :delete, class: "hover:border-b border-b-foreground cursor-pointer px-2" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-4 px-8 bg-background border-y drop-shadow-sm">
+      <p class="max-w-screen-xl mx-auto text-lg font-semibold"><%= content_for?(:page_title) ? yield(:page_title) : "Page" %></p>
+    </div>
+
+    <%# Main Content %>
+    <main class="py-10 px-8">
+      <div class="max-w-screen-xl mx-auto">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

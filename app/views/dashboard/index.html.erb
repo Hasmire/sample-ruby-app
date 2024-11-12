@@ -1,12 +1,24 @@
-<% if logged_in? %>
-  <h1>Welcome Back <%= current_user.username %>!</h1>
-  <%= button_to "Log out", logout_path, method: :delete %>
-<% end %>
+<% content_for :title, "Dashboard" %>
+<% content_for :page_title, "Dashboard" %>
 
+<div class="boxed">
+  <h1>Welcome back, <span class="font-semibold"><%= current_user.username %></span>!</h1>
+</div>
 
-<h1>All Users</h1>
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.username %></li>
-  <% end %>
-</ul>
+<div class="boxed">
+  <div>
+    <h1 class="text-lg font-semibold mb-1">Daycare Slots</h1>
+    <p class="text-muted-foreground">
+      This is where you can view all the daycare slots available for your Pokemon.
+    </p>
+  </div>
+</div>
+
+<div class="boxed">
+  <div>
+    <h1 class="text-lg font-semibold mb-1">Pokemons</h1>
+    <p class="text-muted-foreground">
+      This is where you can view all the Pokemons you currently have.
+    </p>
+  </div>
+</div>
