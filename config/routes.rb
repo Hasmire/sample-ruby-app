@@ -18,11 +18,18 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "dashboard#index"
   get "dashboard/index"
+
+  get "pokemon/new"
+  post "pokemon/create"
+  get "pokemon/:id/edit", to: "pokemon#edit"
+  patch "pokemon/:id", to: "pokemon#update"
+
   get "/profile", to: "users#show"
   get "/profile/edit", to: "users#edit"
   patch "/profile", to: "users#update"
-  get"/profile/edit_credentials", to: "users#edit_credentials"
+  get "/profile/edit_credentials", to: "users#edit_credentials"
   patch "/profile/edit_credentials", to: "users#update_credentials"
+
   get    "/login",  to: "sessions#new"
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

@@ -2,7 +2,7 @@ class Pokemon < ApplicationRecord
   belongs_to :user
   has_one :daycare_slot
   has_one_attached :image
-  
+
   enum :pokemon_type, {
     normal: 0,
     fire: 1,
@@ -23,4 +23,9 @@ class Pokemon < ApplicationRecord
     steel: 16,
     fairy: 17,
   }
+
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :pokemon_type, presence: true
+  validates :description, presence: true, length: { maximum: 500 }
+  validates :image, attached: true, content_type: [ "image/png", "image/jpg", "image/jpeg" ]
 end

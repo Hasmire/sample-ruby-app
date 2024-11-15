@@ -1,0 +1,50 @@
+<% content_for :title, "Register Pokemon" %>
+<% content_for :page_title, "Register Pokemon" %>
+
+<%= render_form_for(@pokemon, url: pokemon_create_path, local: true) do |form| %>
+  <div class="boxed">
+    <div>
+      <h1 class="text-lg font-semibold mb-1">Register a new Pokemon</h1>
+      <p class="text-muted-foreground">
+        Register a new Pokemon below.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+        <!-- Image Field -->
+      <div class="flex flex-col gap-2">
+        <p class="font-semibold">Image:</p>
+        <div class="flex gap-6 items-center">
+          <% if @pokemon.image.attached? %>
+            <%= image_tag @pokemon.image, alt: "Pokemon Image", class: "size-24 rounded-full text-center object-cover" %>
+          <% else %>
+            <%= image_tag "default_avatar.jpg", alt: "Pokemon Image", class: "size-24 rounded-full text-center object-cover" %>
+          <% end %>
+          <%= form.file_field :image, class: "input-styled" %>
+        </div>
+      </div>
+      <!-- Name Field -->
+      <div class="flex flex-col gap-2 mb-4">
+        <%= form.label :name, class: "required" %>
+        <%= form.text_field :name, class: "" %>
+      </div>
+      <!-- Pokemon Type Field -->
+      <div class="flex flex-col gap-2 mb-4">
+        <%= form.label :pokemon_type, class: "required" %>
+        <%= render_select name: "pokemon[pokemon_type]", selected: @pokemon.pokemon_type do |select| %>
+          <% Pokemon.pokemon_types.each do |type, _value| %>
+            <%= select.option label: type.capitalize, value: type %>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- Description Field -->
+      <div class="flex flex-col gap-2">
+        <%= form.label :description, class: "required" %>
+        <%= form.text_area :description, class: "" %>
+      </div>
+    </div>
+    <div class="flex gap-4">
+      <%= render_button "Back", as: :link, href: "/profile", variant: "secondary" %>
+      <%= form.submit "Save Pokemon" %>
+    </div>
+  </div>
+<% end %>
